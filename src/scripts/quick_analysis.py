@@ -10,9 +10,9 @@ import sys
 import json
 from datetime import datetime, timedelta
 
-# Add src to path
-sys.path.append('src')
-sys.path.append('config')
+# Add project root to path
+project_root = os.path.join(os.path.dirname(__file__), '..', '..')
+sys.path.insert(0, project_root)
 
 from src.data_fetcher import ChessComDataFetcher
 from src.game_parser import GameParser

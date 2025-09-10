@@ -11,13 +11,8 @@ import os
 import json
 from datetime import datetime, timedelta
 
-# Add src directory to path for imports
-src_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src')
-if src_path not in sys.path:
-    sys.path.insert(0, src_path)
-
-# Also add the project root to path
-project_root = os.path.dirname(os.path.abspath(__file__))
+# Add project root to path for imports
+project_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
@@ -80,7 +75,7 @@ def test_imports():
         except ImportError:
             import sys
             import os
-            config_path = os.path.join(os.path.dirname(__file__), 'config')
+            config_path = os.path.join(os.path.dirname(__file__), '..', 'config')
             if config_path not in sys.path:
                 sys.path.insert(0, config_path)
             from settings import Config  # type: ignore

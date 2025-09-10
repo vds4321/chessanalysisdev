@@ -62,7 +62,7 @@ A comprehensive Python-based tool for analyzing your Chess.com games to identify
 
 1. **Test the installation**
    ```bash
-   python test_basic_functionality.py
+   python tests/test_basic_functionality.py
    ```
 
 2. **Start Jupyter Notebook**
@@ -172,22 +172,31 @@ chessAnalysit/
 │   │   ├── opening_analyzer.py  # Opening performance analysis
 │   │   ├── tactical_analyzer.py # Tactical pattern analysis
 │   │   └── progression_analyzer.py # Performance progression analysis
+│   ├── scripts/                 # Standalone analysis scripts
+│   │   ├── quick_analysis.py    # Quick analysis runner
+│   │   └── run_tactical_analysis.py # Tactical analysis runner
 │   ├── visualizers/             # Chart generation modules
 │   └── utils/                   # Utility functions
 ├── notebooks/                   # Interactive analysis notebooks
 │   ├── main_analysis.ipynb      # Main dashboard
 │   └── progression_analysis.ipynb # Progression tracking
-├── data/                        # Data storage
+├── data/                        # Centralized data storage
 │   ├── raw/                     # Downloaded games
 │   ├── processed/               # Analyzed games
 │   └── cache/                   # API response cache
 ├── config/                      # Configuration files
-├── tests/                       # Unit tests
+├── tests/                       # Test files
+│   ├── test_basic_functionality.py # Comprehensive functionality test
+│   └── test_imports_only.py     # Import validation test
+├── docs/                        # Documentation
+│   ├── ARCHITECTURE.md          # System architecture
+│   ├── IMPLEMENTATION_GUIDE.md  # Implementation details
+│   ├── PROJECT_SUMMARY.md       # Project overview
+│   └── TECHNICAL_SPECS.md       # Technical specifications
 ├── requirements.txt             # Full dependencies
 ├── requirements_simple.txt      # Minimal dependencies
-├── test_basic_functionality.py  # Comprehensive test script
 ├── QUICK_START.md              # Quick start guide
-└── PROJECT_SUMMARY.md          # Project overview
+└── README.md                   # This file
 ```
 
 ## 🔧 Configuration
@@ -246,7 +255,10 @@ TIME_PRESSURE_THRESHOLD = 30
 ### Running Tests
 ```bash
 # Run comprehensive functionality test
-python test_basic_functionality.py
+python tests/test_basic_functionality.py
+
+# Run import validation test
+python tests/test_imports_only.py
 
 # Run unit tests (if available)
 pytest tests/
@@ -334,14 +346,15 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - If issues persist, wait a few minutes and retry
 
 **"Dependencies missing"**
-- Run the test script: `python test_basic_functionality.py`
+- Run the test script: `python tests/test_basic_functionality.py`
 - Install missing packages: `pip install -r requirements.txt`
 
 ### Getting Help
 
-- Run the comprehensive test: `python test_basic_functionality.py`
+- Run the comprehensive test: `python tests/test_basic_functionality.py`
 - Check the [QUICK_START.md](QUICK_START.md) for step-by-step instructions
-- Review the [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) for project overview
+- Review the [docs/PROJECT_SUMMARY.md](docs/PROJECT_SUMMARY.md) for project overview
+- Check the [docs/TECHNICAL_SPECS.md](docs/TECHNICAL_SPECS.md) for advanced configuration
 - Check the [Issues](../../issues) page for known problems
 - Create a new issue with detailed error information
 - Include your Python version, OS, and error messages
