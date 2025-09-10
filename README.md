@@ -179,7 +179,11 @@ chessAnalysit/
 │   └── utils/                   # Utility functions
 ├── notebooks/                   # Interactive analysis notebooks
 │   ├── main_analysis.ipynb      # Main dashboard
-│   └── progression_analysis.ipynb # Progression tracking
+│   ├── progression_analysis.ipynb # Progression tracking
+│   └── data/                    # Notebook-specific data storage
+│       ├── raw/                 # Downloaded games for notebooks
+│       ├── processed/           # Analyzed games for notebooks
+│       └── cache/               # API response cache for notebooks
 ├── data/                        # Centralized data storage
 │   ├── raw/                     # Downloaded games
 │   ├── processed/               # Analyzed games
