@@ -7,7 +7,7 @@ A comprehensive Python-based tool for analyzing your Chess.com games to identify
 ### Core Analysis
 - **Opening Performance**: Analyze success rates, preparation depth, and repertoire gaps
 - **Tactical Analysis**: Identify blunders, missed opportunities, and tactical patterns
-- **Endgame Evaluation**: Track conversion rates and defensive performance
+- **Progression Analysis**: Track performance evolution and improvement trends over time
 - **Time Management**: Analyze time usage patterns and efficiency
 - **Rating Progression**: Monitor performance trends over time
 
@@ -22,7 +22,7 @@ A comprehensive Python-based tool for analyzing your Chess.com games to identify
 ### Prerequisites
 - Python 3.8 or higher
 - Chess.com account with game history
-- Stockfish chess engine (for position analysis)
+- Stockfish chess engine (optional, for advanced position analysis)
 
 ### Installation
 
@@ -40,10 +40,14 @@ A comprehensive Python-based tool for analyzing your Chess.com games to identify
 
 3. **Install dependencies**
    ```bash
+   # For full installation with all features
    pip install -r requirements.txt
+   
+   # Or for minimal installation
+   pip install -r requirements_simple.txt
    ```
 
-4. **Install Stockfish** (for advanced analysis)
+4. **Install Stockfish** (optional, for advanced analysis)
    - **macOS**: `brew install stockfish`
    - **Ubuntu/Debian**: `sudo apt-get install stockfish`
    - **Windows**: Download from [Stockfish website](https://stockfishchess.org/download/)
@@ -56,17 +60,22 @@ A comprehensive Python-based tool for analyzing your Chess.com games to identify
 
 ### Basic Usage
 
-1. **Start Jupyter Notebook**
+1. **Test the installation**
+   ```bash
+   python test_basic_functionality.py
+   ```
+
+2. **Start Jupyter Notebook**
    ```bash
    jupyter notebook notebooks/main_analysis.ipynb
    ```
 
-2. **Update Configuration**
+3. **Update Configuration**
    - Set your Chess.com username in the notebook
    - Choose analysis period (e.g., last 6 months)
    - Select time controls to analyze
 
-3. **Run Analysis**
+4. **Run Analysis**
    - Execute notebook cells step by step
    - Download and parse your games
    - Generate comprehensive analysis reports
@@ -88,6 +97,39 @@ recommendations = analyzer.get_opening_recommendations(opening_analysis)
 - Preparation depth analysis
 - Color-specific performance
 - Repertoire gap identification
+
+### Tactical Analyzer
+```python
+from src.analyzers.tactical_analyzer import TacticalAnalyzer
+
+analyzer = TacticalAnalyzer()
+tactical_analysis = analyzer.analyze_tactical_patterns(parsed_games)
+recommendations = analyzer.get_tactical_recommendations(tactical_analysis)
+```
+
+**Features:**
+- Move quality classification (blunders, mistakes, inaccuracies)
+- Tactical pattern recognition
+- Position evaluation with Stockfish
+- Accuracy calculations
+- Time pressure impact analysis
+
+### Progression Analyzer
+```python
+from src.analyzers.progression_analyzer import ProgressionAnalyzer
+
+analyzer = ProgressionAnalyzer()
+progression_data = analyzer.analyze_progression(parsed_games)
+recommendations = analyzer.get_progression_recommendations(progression_data)
+```
+
+**Features:**
+- Rating progression over time
+- Accuracy trend analysis
+- Opening repertoire evolution
+- Time management improvement
+- Playing style development
+- Consistency metrics
 
 ### Game Parser
 ```python
@@ -129,22 +171,23 @@ chessAnalysit/
 │   ├── analyzers/               # Analysis modules
 │   │   ├── opening_analyzer.py  # Opening performance analysis
 │   │   ├── tactical_analyzer.py # Tactical pattern analysis
-│   │   ├── endgame_analyzer.py  # Endgame performance analysis
-│   │   ├── time_analyzer.py     # Time management analysis
-│   │   └── rating_analyzer.py   # Rating progression analysis
+│   │   └── progression_analyzer.py # Performance progression analysis
 │   ├── visualizers/             # Chart generation modules
 │   └── utils/                   # Utility functions
 ├── notebooks/                   # Interactive analysis notebooks
 │   ├── main_analysis.ipynb      # Main dashboard
-│   ├── opening_deep_dive.ipynb  # Detailed opening analysis
-│   ├── tactical_review.ipynb    # Tactical pattern analysis
-│   └── performance_trends.ipynb # Performance tracking
+│   └── progression_analysis.ipynb # Progression tracking
 ├── data/                        # Data storage
 │   ├── raw/                     # Downloaded games
 │   ├── processed/               # Analyzed games
 │   └── cache/                   # API response cache
 ├── config/                      # Configuration files
-└── tests/                       # Unit tests
+├── tests/                       # Unit tests
+├── requirements.txt             # Full dependencies
+├── requirements_simple.txt      # Minimal dependencies
+├── test_basic_functionality.py  # Comprehensive test script
+├── QUICK_START.md              # Quick start guide
+└── PROJECT_SUMMARY.md          # Project overview
 ```
 
 ## 🔧 Configuration
@@ -188,6 +231,11 @@ TIME_PRESSURE_THRESHOLD = 30
 - "Your blunder rate increases 3x when your opponent's rating is >100 points higher"
 - "Fork patterns are your strongest tactical motif (85% success rate)"
 
+### Progression Analysis
+- "Your accuracy has improved from 75% to 82% over the last 6 months"
+- "Your opening repertoire has expanded by 40% this year"
+- "You show consistent improvement in endgame conversion rates"
+
 ### Time Management
 - "You spend 40% of your time on the first 15 moves but only 20% on critical decisions"
 - "Your accuracy drops from 85% to 65% when you have <10% time remaining"
@@ -197,6 +245,10 @@ TIME_PRESSURE_THRESHOLD = 30
 
 ### Running Tests
 ```bash
+# Run comprehensive functionality test
+python test_basic_functionality.py
+
+# Run unit tests (if available)
 pytest tests/
 ```
 
@@ -208,7 +260,7 @@ flake8 src/
 
 ### Adding New Analyzers
 1. Create new analyzer in `src/analyzers/`
-2. Implement analysis methods
+2. Implement analysis methods following existing patterns
 3. Add visualization components
 4. Update notebooks with new analysis
 
@@ -216,6 +268,8 @@ flake8 src/
 
 ### ChessComDataFetcher
 - `get_player_profile()` - Get player information
+- `get_available_archives()` - Get list of available game archives
+- `get_games_for_month(year, month)` - Get games for specific month
 - `get_all_games(start_date, end_date)` - Download games in date range
 - `save_games_to_file(games, filename)` - Save games to JSON file
 
@@ -223,11 +277,22 @@ flake8 src/
 - `parse_chess_com_game(game_data)` - Parse single game
 - `parse_games_batch(games_data)` - Parse multiple games
 - `_analyze_moves(game, player_color)` - Analyze move sequence
+- `_classify_move(board, move, evaluation, best_move)` - Classify move quality
 
 ### OpeningAnalyzer
 - `analyze_opening_performance(games_data)` - Analyze opening statistics
 - `get_opening_recommendations(opening_analysis)` - Generate recommendations
 - `analyze_color_preferences(games_data)` - Color-specific analysis
+- `get_opening_trends(games_data)` - Opening trend analysis
+
+### TacticalAnalyzer
+- `analyze_game_tactics(pgn_string, player_name)` - Analyze single game tactics
+- `analyze_tactical_patterns(games_data)` - Analyze tactical patterns across games
+- `get_tactical_recommendations(tactical_analysis)` - Generate tactical recommendations
+
+### ProgressionAnalyzer
+- `analyze_progression(games_data)` - Comprehensive progression analysis
+- `get_progression_recommendations(progression_data)` - Generate improvement recommendations
 
 ## 🤝 Contributing
 
@@ -268,8 +333,15 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - The application handles rate limiting automatically
 - If issues persist, wait a few minutes and retry
 
+**"Dependencies missing"**
+- Run the test script: `python test_basic_functionality.py`
+- Install missing packages: `pip install -r requirements.txt`
+
 ### Getting Help
 
+- Run the comprehensive test: `python test_basic_functionality.py`
+- Check the [QUICK_START.md](QUICK_START.md) for step-by-step instructions
+- Review the [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) for project overview
 - Check the [Issues](../../issues) page for known problems
 - Create a new issue with detailed error information
 - Include your Python version, OS, and error messages
@@ -283,6 +355,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [ ] Tournament performance analysis
 - [ ] Opening repertoire builder
 - [ ] Automated training recommendations
+- [ ] Endgame-specific analyzer
+- [ ] Time management analyzer
+- [ ] Rating-specific analyzer
 
 ---
 
