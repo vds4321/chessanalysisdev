@@ -200,7 +200,8 @@ class TacticalAnalyzer:
         total_eval_loss = 0
         for move_eval in move_evaluations:
             eval_change = move_eval.get('eval_change', 0)
-            if eval_change < 0:  # Only count evaluation losses
+            # Ensure eval_change is a number, not a list or other type
+            if isinstance(eval_change, (int, float)) and eval_change < 0:
                 total_eval_loss += abs(eval_change)
         
         # Simple accuracy calculation (can be refined)
@@ -213,40 +214,78 @@ class TacticalAnalyzer:
         Analyze tactical patterns across multiple games.
         
         Args:
-            games_data: List of game dictionaries with tactical analysis
+            games_data: List of parsed game dictionaries
             
         Returns:
-            Dictionary with pattern analysis results
+            Dictionary with comprehensive tactical analysis results
         """
+        from config.settings import Config
+        
         if not games_data:
-            return {}
+            return {
+                'total_games': 0,
+                'average_accuracy': 0.0,
+                'total_moves': 0,
+                'total_blunders': 0,
+                'total_mistakes': 0,
+                'total_inaccuracies': 0
+            }
         
-        patterns = {
-            'common_blunder_positions': [],
-            'frequent_mistake_types': {},
-            'time_pressure_correlation': {},
-            'opponent_rating_correlation': {},
-            'opening_tactical_performance': {},
-            'endgame_tactical_performance': {}
-        }
+        # Initialize engine
+        self._init_engine()
         
-        # Analyze patterns across games
-        for game_data in games_data:
-            tactical_data = game_data.get('tactical_analysis', {})
-            if not tactical_data:
+        # Analyze each game individually first
+        analyzed_games = []
+        total_blunders = 0
+        total_mistakes = 0
+        total_inaccuracies = 0
+        total_moves = 0
+        total_accuracy = 0.0
+        
+        for i, game_data in enumerate(games_data):
+            try:
+                # Get PGN from parsed game
+                pgn = game_data.get('pgn', '')
+                if not pgn:
+                    continue
+                
+                # Run tactical analysis on individual game
+                game_tactics = self.analyze_game_tactics(pgn, Config.CHESS_COM_USERNAME)
+                
+                if game_tactics and 'summary' in game_tactics:
+                    summary = game_tactics['summary']
+                    analyzed_games.append(game_tactics)
+                    
+                    # Accumulate statistics
+                    total_blunders += summary.get('total_blunders', 0)
+                    total_mistakes += summary.get('total_mistakes', 0)
+                    total_inaccuracies += summary.get('total_inaccuracies', 0)
+                    total_moves += summary.get('total_moves', 0)
+                    total_accuracy += summary.get('accuracy', 0)
+                    
+            except Exception as e:
+                logger.error(f"Error analyzing game {i+1}: {e}")
                 continue
-            
-            # Analyze blunder patterns
-            for blunder in tactical_data.get('blunders', []):
-                move_num = blunder.get('move_number', 0)
-                if move_num <= 15:  # Opening
-                    patterns['opening_tactical_performance']['blunders'] = \
-                        patterns['opening_tactical_performance'].get('blunders', 0) + 1
-                elif move_num >= 40:  # Endgame
-                    patterns['endgame_tactical_performance']['blunders'] = \
-                        patterns['endgame_tactical_performance'].get('blunders', 0) + 1
         
-        return patterns
+        # Calculate overall statistics
+        games_analyzed = len(analyzed_games)
+        if games_analyzed > 0:
+            avg_accuracy = total_accuracy / games_analyzed
+        else:
+            avg_accuracy = 0.0
+        
+        # Close engine
+        self._close_engine()
+        
+        return {
+            'total_games': games_analyzed,
+            'average_accuracy': avg_accuracy,
+            'total_moves': total_moves,
+            'total_blunders': total_blunders,
+            'total_mistakes': total_mistakes,
+            'total_inaccuracies': total_inaccuracies,
+            'game_data': analyzed_games
+        }
     
     def get_tactical_recommendations(self, tactical_analysis: Dict) -> List[Dict]:
         """

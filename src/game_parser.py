@@ -95,7 +95,8 @@ class GameParser:
                 'opening_analysis': opening_analysis,
                 'move_analysis': move_analysis,
                 'game_phases': game_phases,
-                'statistics': statistics
+                'statistics': statistics,
+                'pgn': pgn_string  # Preserve original PGN for tactical analysis
             }
             
         except Exception as e:
