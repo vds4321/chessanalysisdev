@@ -22,7 +22,7 @@ A comprehensive Python-based tool for analyzing your Chess.com games to identify
 ### Prerequisites
 - Python 3.8 or higher
 - Chess.com account with game history
-- Stockfish chess engine (optional, for advanced position analysis)
+- Stockfish chess engine (required for tactical analysis)
 
 ### Installation
 
@@ -62,11 +62,23 @@ A comprehensive Python-based tool for analyzing your Chess.com games to identify
 
 1. **Test the installation**
    ```bash
+   # Complete system test
+   python test_app.py
+   
+   # Or run individual tests
    python tests/test_basic_functionality.py
+   python test_username.py  # Validate configuration
    ```
 
-2. **Start Jupyter Notebook**
+2. **Quick tactical analysis**
    ```bash
+   python quick_tactical_fix.py
+   ```
+
+3. **Start Jupyter Notebook**
+   ```bash
+   jupyter notebook notebooks/tactical_review_simple.ipynb  # Recommended
+   # Or for full dashboard:
    jupyter notebook notebooks/main_analysis.ipynb
    ```
 
@@ -180,6 +192,8 @@ chessAnalysit/
 ├── notebooks/                   # Interactive analysis notebooks
 │   ├── main_analysis.ipynb      # Main dashboard
 │   ├── progression_analysis.ipynb # Progression tracking
+│   ├── tactical_review.ipynb    # Complete tactical analysis
+│   ├── tactical_review_simple.ipynb # Simplified tactical analysis (recommended)
 │   └── data/                    # Notebook-specific data storage
 │       ├── raw/                 # Downloaded games for notebooks
 │       ├── processed/           # Analyzed games for notebooks
@@ -192,6 +206,11 @@ chessAnalysit/
 ├── tests/                       # Test files
 │   ├── test_basic_functionality.py # Comprehensive functionality test
 │   └── test_imports_only.py     # Import validation test
+├── test_app.py                  # Complete system integration test
+├── test_username.py             # Configuration validation script
+├── quick_tactical_fix.py        # Working tactical analysis script
+├── debug_tactical.py            # Development debugging tool
+├── CHANGELOG.md                 # Project improvement history
 ├── docs/                        # Documentation
 │   ├── ARCHITECTURE.md          # System architecture
 │   ├── IMPLEMENTATION_GUIDE.md  # Implementation details
