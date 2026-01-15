@@ -25,7 +25,7 @@ class OpeningRecommender:
     """
     Recommends chess openings based on player performance and style.
 
-    Analogous to Vinted's item recommendation system:
+    Analogous to e-commerce item recommendation systems:
     - Content-based filtering: Recommend openings similar to successful ones
     - Collaborative filtering: Recommend openings used by similar players
     - Hybrid approach: Combine multiple signals for better recommendations
@@ -197,7 +197,7 @@ class OpeningRecommender:
         - 'similar': Recommend openings similar to successful ones
         - 'hybrid': Combine multiple strategies (RECOMMENDED)
 
-        Similar to: Vinted's homepage recommendation algorithm
+        Similar to: E-commerce homepage recommendation algorithms
 
         Args:
             games_data: Player's game history
@@ -322,7 +322,7 @@ class OpeningRecommender:
         - Success rate: Win rate when following recommendations
         - Coverage: Diversity of recommendations
 
-        Similar to: Evaluating Vinted's recommendation algorithm performance
+        Similar to: Evaluating e-commerce recommendation algorithm performance
 
         Args:
             recommendations: List of recommended openings
@@ -380,7 +380,7 @@ if __name__ == "__main__":
     print("- Hybrid recommendation strategies")
     print("- A/B testing evaluation framework")
     print("- Confidence scoring (similar to Thompson sampling)")
-    print("\nApplicable to Vinted's recommendation engine for:")
+    print("\nApplicable to e-commerce recommendation engines for:")
     print("- Item recommendations on homepage")
     print("- Similar item suggestions")
     print("- Personalized search ranking")
