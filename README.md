@@ -2,19 +2,24 @@
 
 ⚠️ **This is the experimental/development repository.**
 
-👉 **For production-ready code, see: [chessdotcomcoach](https://github.com/your_username_here/chessdotcomcoach)**
+👉 **For production-ready code, see: [chessdotcomcoach](https://github.com/vds4321/chessdotcomcoach)**
 
 ---
 
 ## What This Repo Is
 
 Fast-moving experimentation with:
-- LLM-enhanced coaching
+- LLM-enhanced coaching experiments
 - Multi-model comparisons (Claude, GPT-4, Llama)
 - Advanced ML features
 - New analysis techniques
 
 Code here is **messy and volatile**. Features proven valuable get refactored and promoted to production.
+
+**Already promoted to production (chessdotcomcoach):**
+- ✅ SimpleChessCoach - LLM-powered coaching with Claude
+- ✅ Blunder explanation feature
+- ✅ Opening performance analysis with AI insights
 
 **See [EXPERIMENTS.md](EXPERIMENTS.md) for active experiments and tracking.**
 
