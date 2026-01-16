@@ -9,14 +9,14 @@
 
 ### **Two-Repository Strategy**
 
-#### Production: [chessdotcomcoach](https://github.com/vds4321/chessdotcomcoach)
+#### Production: [chessdotcomcoach](https://github.com/your_username_here/chessdotcomcoach)
 - **Purpose:** Clean, production-ready chess analysis tool
 - **Audience:** Users, employers, collaborators
 - **Philosophy:** Minimal, proven features only
 - **Status:** ✅ Live and ready
 - **Commit:** `5aa28e8` - Initial production fork
 
-#### Experimental: [chessAnalysit](https://github.com/vds4321/chessAnalysit)
+#### Experimental: [chessAnalysit](https://github.com/your_username_here/chessAnalysit)
 - **Purpose:** LLM experiments, rapid iteration
 - **Audience:** Development, experimentation
 - **Philosophy:** Messy is OK, document learnings
@@ -270,17 +270,17 @@ chessAnalysit/
 **Experimental Repo:**
 - Path: `/Users/martinhynie/Documents/GitHub/chessAnalysit`
 - Branch: `main`
-- Remote: `https://github.com/vds4321/chessAnalysit.git`
+- Remote: `https://github.com/your_username_here/chessAnalysit.git`
 
 **Production Repo:**
 - Path: `/Users/martinhynie/Documents/GitHub/chessdotcomcoach`
 - Branch: `main`
-- Remote: `https://github.com/vds4321/chessdotcomcoach.git`
+- Remote: `https://github.com/your_username_here/chessdotcomcoach.git`
 
 ### Environment Variables (.env)
 ```bash
 # Chess.com
-CHESS_COM_USERNAME=vds4321
+CHESS_COM_USERNAME=your_username_here
 
 # Stockfish
 STOCKFISH_PATH=/opt/homebrew/bin/stockfish

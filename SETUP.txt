@@ -1,0 +1,36 @@
+====================================
+CHESS.COM COACH - QUICK SETUP
+====================================
+
+Step 1: Open the file called ".env.example" in this folder
+
+Step 2: Change these two lines:
+
+   CHESS_COM_USERNAME=your_chess_com_username
+   ANTHROPIC_API_KEY=
+
+   Replace "your_chess_com_username" with YOUR Chess.com username.
+   For example, if your Chess.com profile is chess.com/member/john123
+   then change it to: CHESS_COM_USERNAME=john123
+
+   (The API key is optional - leave it blank if you don't have one)
+
+Step 3: Save the file as ".env" (remove the ".example" part)
+
+   On Mac: File > Save As > name it ".env"
+   On Windows: File > Save As > name it ".env" (with quotes)
+
+Step 4: You're done! Run the analysis notebook.
+
+====================================
+NEED HELP?
+====================================
+- Your Chess.com username is in your profile URL
+  Example: chess.com/member/YOUR_USERNAME
+
+- Your games must be set to PUBLIC for this to work
+  (Settings > Privacy > Game Archive > Public)
+
+- The Anthropic API key is optional and only needed
+  for AI coaching features. Get one free at:
+  https://console.anthropic.com/

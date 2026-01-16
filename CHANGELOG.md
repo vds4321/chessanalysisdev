@@ -20,7 +20,7 @@
 - Enhanced error handling throughout the tactical analysis pipeline
 
 ### 📊 Validation Results
-- Successfully analyzed real Chess.com games (username: vds4321)
+- Successfully analyzed real Chess.com games (username: your_username_here)
 - Processed 62 games with tactical insights showing 92.2% average accuracy
 - Generated actionable chess improvement recommendations
 - Demonstrated full system functionality from data fetching to analysis visualization

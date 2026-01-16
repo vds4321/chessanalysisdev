@@ -2,7 +2,7 @@
 
 ⚠️ **This is the experimental/development repository.**
 
-👉 **For production-ready code, see: [chessdotcomcoach](https://github.com/vds4321/chessdotcomcoach)**
+👉 **For production-ready code, see: [chessdotcomcoach](https://github.com/your_username_here/chessdotcomcoach)**
 
 ---
 
