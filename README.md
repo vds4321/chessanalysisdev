@@ -1,4 +1,26 @@
-# Chess Analysis Application
+# Chess Analysis - Experimental Repository
+
+⚠️ **This is the experimental/development repository.**
+
+👉 **For production-ready code, see: [chessdotcomcoach](https://github.com/vds4321/chessdotcomcoach)**
+
+---
+
+## What This Repo Is
+
+Fast-moving experimentation with:
+- LLM-enhanced coaching
+- Multi-model comparisons (Claude, GPT-4, Llama)
+- Advanced ML features
+- New analysis techniques
+
+Code here is **messy and volatile**. Features proven valuable get refactored and promoted to production.
+
+**See [EXPERIMENTS.md](EXPERIMENTS.md) for active experiments and tracking.**
+
+---
+
+## Original Description
 
 A comprehensive Python-based tool for analyzing your Chess.com games to identify patterns, strengths, weaknesses, and areas for improvement.
 
