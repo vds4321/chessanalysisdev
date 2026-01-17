@@ -2,7 +2,7 @@
 
 ⚠️ **This is the experimental/development repository.**
 
-👉 **For production code, see: [chessdotcomcoach](https://github.com/your_username_here/chessdotcomcoach)**
+👉 **For production code, see: [chessdotcomcoach](https://github.com/vds4321/chessdotcomcoach)**
 
 ---
 
@@ -114,7 +114,7 @@ Code here is **messy and volatile**. Features proven valuable get refactored and
 ## Using This Repo
 
 **If you want to USE chess analysis:**
-→ Go to [chessdotcomcoach](https://github.com/your_username_here/chessdotcomcoach) (production)
+→ Go to [chessdotcomcoach](https://github.com/vds4321/chessdotcomcoach) (production)
 
 **If you want to EXPERIMENT with cutting-edge features:**
 → You're in the right place
@@ -147,7 +147,7 @@ cd ../chessdotcomcoach
 git cherry-pick abc123  # Clean, tested feature only
 
 # 6. Delete experimental mess (keep learnings)
-cd ../chessAnalysit
+cd ../chessanalysisdev
 git checkout main
 git branch -D llm-coaching-poc
 # (code preserved in git history + LEARNINGS.md)

@@ -1,7 +1,7 @@
 # Fork Creation Handoff - chessdotcomcoach
 
 ## Context
-Creating production fork of chessAnalysit → chessdotcomcoach
+Creating production fork of chessanalysisdev → chessdotcomcoach
 - **Production repo:** Clean, minimal, human-curated
 - **Experimental repo (current):** LLM experiments, rapid iteration
 
@@ -43,7 +43,7 @@ Creating production fork of chessAnalysit → chessdotcomcoach
 ### Step 2: Clone and Prepare
 ```bash
 cd ~/Documents/GitHub
-git clone https://github.com/vds4321/chessAnalysit.git chessdotcomcoach
+git clone https://github.com/vds4321/chessanalysisdev.git chessdotcomcoach
 cd chessdotcomcoach
 
 # Remove old remote, add new
@@ -79,7 +79,7 @@ git commit -m "Initial production fork - clean, focused chess analysis
 Removed experimental scripts and consolidated documentation.
 This repository contains proven, working chess analysis tools.
 
-Experimental work continues at: vds4321/chessAnalysit"
+Experimental work continues at: vds4321/chessanalysisdev"
 
 git push -u origin production-cleanup
 git checkout -b main
@@ -89,7 +89,7 @@ git push -u origin main
 
 ### Step 6: Update Experimental Repo
 ```bash
-cd /Users/martinhynie/Documents/GitHub/chessAnalysit
+cd /Users/martinhynie/Documents/GitHub/chessanalysisdev
 
 # Create EXPERIMENTS.md
 # Update README to point to production fork
@@ -140,7 +140,7 @@ cd /Users/martinhynie/Documents/GitHub/chessAnalysit
 ## After Fork Complete - Next Phase
 
 ### Phase 1: LLM Proof of Concept (in experimental repo)
-Create in chessAnalysit (NOT chessdotcomcoach):
+Create in chessanalysisdev (NOT chessdotcomcoach):
 
 **File:** `src/llm/chess_coach.py` (~100 lines)
 - Single class: SimpleChessCoach

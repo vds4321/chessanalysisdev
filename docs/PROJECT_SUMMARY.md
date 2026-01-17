@@ -55,7 +55,7 @@ This project will create a comprehensive Python-based chess analysis tool that d
 
 ## Project Structure
 ```
-chessAnalysit/
+chessanalysisdev/
 ├── src/                    # Core application code
 │   ├── data_fetcher.py     # Chess.com API integration
 │   ├── game_parser.py      # PGN parsing and analysis

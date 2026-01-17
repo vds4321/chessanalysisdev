@@ -14,7 +14,7 @@ A comprehensive Python-based chess game analysis tool that downloads games from 
 
 ## Project Structure
 ```
-chessAnalysit/
+chessanalysisdev/
 ├── src/
 │   ├── __init__.py
 │   ├── data_fetcher.py          # Chess.com API integration

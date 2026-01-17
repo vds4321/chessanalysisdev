@@ -56,7 +56,7 @@ A comprehensive Python-based tool for analyzing your Chess.com games to identify
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd chessAnalysit
+   cd chessanalysisdev
    ```
 
 2. **Create virtual environment**
@@ -203,7 +203,7 @@ games = fetcher.get_all_games(start_date=start_date, end_date=end_date)
 ## 📁 Project Structure
 
 ```
-chessAnalysit/
+chessanalysisdev/
 ├── src/                          # Core application code
 │   ├── data_fetcher.py          # Chess.com API integration
 │   ├── game_parser.py           # PGN parsing and analysis

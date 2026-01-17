@@ -16,7 +16,7 @@
 - **Status:** ✅ Live and ready
 - **Commit:** `5aa28e8` - Initial production fork
 
-#### Experimental: [chessAnalysit](https://github.com/your_username_here/chessAnalysit)
+#### Experimental: [chessanalysisdev](https://github.com/your_username_here/chessanalysisdev)
 - **Purpose:** LLM experiments, rapid iteration
 - **Audience:** Development, experimentation
 - **Philosophy:** Messy is OK, document learnings
@@ -65,7 +65,7 @@
 
 ### Phase 1: Single Skill POC (READY TO START)
 
-**Location:** Experimental repo (`chessAnalysit`)
+**Location:** Experimental repo (`chessanalysisdev`)
 **Timeline:** 1 week
 **Goal:** Prove LLM coaching adds value to chess analysis
 
@@ -200,7 +200,7 @@ Only promote features that are:
 
 ### Development Workflow
 ```
-Experimental Repo (chessAnalysit):
+Experimental Repo (chessanalysisdev):
 1. Create feature branch (e.g., llm-coaching-poc)
 2. Build POC quickly (AI-assisted OK)
 3. Test with real games
@@ -246,9 +246,9 @@ chessdotcomcoach/
 └── requirements.txt
 ```
 
-### Experimental (chessAnalysit)
+### Experimental (chessanalysisdev)
 ```
-chessAnalysit/
+chessanalysisdev/
 ├── [Same structure as production]
 ├── src/llm/                      # NEW - LLM experiments
 │   └── chess_coach.py           # POC (to be created)
@@ -268,9 +268,9 @@ chessAnalysit/
 
 ### Current Setup
 **Experimental Repo:**
-- Path: `/Users/martinhynie/Documents/GitHub/chessAnalysit`
+- Path: `/Users/martinhynie/Documents/GitHub/chessanalysisdev`
 - Branch: `main`
-- Remote: `https://github.com/your_username_here/chessAnalysit.git`
+- Remote: `https://github.com/your_username_here/chessanalysisdev.git`
 
 **Production Repo:**
 - Path: `/Users/martinhynie/Documents/GitHub/chessdotcomcoach`
@@ -316,18 +316,18 @@ cd ~/Documents/GitHub/chessdotcomcoach
 
 **Switch to experimental repo:**
 ```bash
-cd ~/Documents/GitHub/chessAnalysit
+cd ~/Documents/GitHub/chessanalysisdev
 ```
 
 **Create LLM POC branch:**
 ```bash
-cd ~/Documents/GitHub/chessAnalysit
+cd ~/Documents/GitHub/chessanalysisdev
 git checkout -b llm-coaching-poc
 ```
 
 **Run existing analysis:**
 ```bash
-cd ~/Documents/GitHub/chessdotcomcoach  # or chessAnalysit
+cd ~/Documents/GitHub/chessdotcomcoach  # or chessanalysisdev
 jupyter notebook notebooks/main_analysis.ipynb
 ```
 
@@ -335,7 +335,7 @@ jupyter notebook notebooks/main_analysis.ipynb
 
 ## 📊 Files Created This Session
 
-**In Experimental Repo (chessAnalysit):**
+**In Experimental Repo (chessanalysisdev):**
 - ✅ `cleanup_for_production.sh` - Cleanup script (used for fork)
 - ✅ `README_PRODUCTION.md` - Production README template (used for fork)
 - ✅ `EXPERIMENTS.md` - Experiment tracking
@@ -357,7 +357,7 @@ jupyter notebook notebooks/main_analysis.ipynb
 **Location:** Experimental repo
 **Action:**
 ```bash
-cd ~/Documents/GitHub/chessAnalysit
+cd ~/Documents/GitHub/chessanalysisdev
 git checkout -b llm-coaching-poc
 # Create src/llm/chess_coach.py
 # Create tests/test_chess_coach.py
@@ -471,12 +471,12 @@ git checkout -b llm-coaching-poc
 
 ### "Which repo should I work in?"
 - **Production (chessdotcomcoach):** Bug fixes, documentation, proven features
-- **Experimental (chessAnalysit):** New features, experiments, rapid iteration
+- **Experimental (chessanalysisdev):** New features, experiments, rapid iteration
 
 ### "How do I promote experimental feature to production?"
 ```bash
 # 1. In experimental repo
-cd ~/Documents/GitHub/chessAnalysit
+cd ~/Documents/GitHub/chessanalysisdev
 git log --oneline  # Find commit hash of clean implementation
 
 # 2. In production repo
@@ -504,7 +504,7 @@ If any no → reconsider
 Read PROJECT_STATUS.md for complete project context.
 
 Key points:
-- Two repos: chessdotcomcoach (production), chessAnalysit (experimental)
+- Two repos: chessdotcomcoach (production), chessanalysisdev (experimental)
 - Fork complete, ready for Phase 1 (LLM POC)
 - Design philosophy: simple first, abstract later
 - Next: Create src/llm/chess_coach.py in experimental repo
@@ -520,5 +520,5 @@ Code is obvious, helps chess, <150 lines, tested
 
 **Status:** ✅ Ready to proceed with Phase 1
 **Next Action:** Create SimpleChessCoach class
-**Location:** ~/Documents/GitHub/chessAnalysit (experimental)
+**Location:** ~/Documents/GitHub/chessanalysisdev (experimental)
 **Documentation:** All context preserved in this file

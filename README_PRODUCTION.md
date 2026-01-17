@@ -247,7 +247,7 @@ PRs welcome. Guidelines:
 - Test with real games
 - Update documentation
 
-**See experimental work at:** [vds4321/chessAnalysit](https://github.com/vds4321/chessAnalysit)
+**See experimental work at:** [vds4321/chessanalysisdev](https://github.com/vds4321/chessanalysisdev)
 
 ---
 

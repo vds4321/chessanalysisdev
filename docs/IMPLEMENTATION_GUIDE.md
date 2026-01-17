@@ -64,7 +64,7 @@ flake8==6.1.0
 Create the following directory structure:
 
 ```
-chessAnalysit/
+chessanalysisdev/
 ├── src/
 │   ├── __init__.py
 │   ├── data_fetcher.py
