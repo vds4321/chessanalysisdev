@@ -1,27 +1,32 @@
 # Chess Analysis Project - Complete Status & Handoff
 
-**Last Updated:** 2026-01-16
-**Status:** ✅ Production fork complete, ready for Phase 1 (LLM POC)
+**Last Updated:** 2026-01-17
+**Status:** ✅ LLM coaching complete, YourChessDotComCoach backend auth complete
 
 ---
 
 ## 🎯 Current State
 
-### **Two-Repository Strategy**
+### **Three-Repository Strategy**
 
-#### Production: [chessdotcomcoach](https://github.com/your_username_here/chessdotcomcoach)
-- **Purpose:** Clean, production-ready chess analysis tool
+#### Production: [chessdotcomcoach](https://github.com/vds4321/chessdotcomcoach)
+- **Purpose:** Clean, production-ready chess analysis library
 - **Audience:** Users, employers, collaborators
 - **Philosophy:** Minimal, proven features only
-- **Status:** ✅ Live and ready
-- **Commit:** `5aa28e8` - Initial production fork
+- **Status:** ✅ LLM coaching implemented and tested
+- **Features:** Opening analysis, tactical analysis, progression tracking, ML recommendations, LLM coaching
 
-#### Experimental: [chessanalysisdev](https://github.com/your_username_here/chessanalysisdev)
-- **Purpose:** LLM experiments, rapid iteration
+#### Experimental: [chessanalysisdev](https://github.com/vds4321/chessanalysisdev)
+- **Purpose:** Experiments and rapid iteration
 - **Audience:** Development, experimentation
 - **Philosophy:** Messy is OK, document learnings
-- **Status:** ✅ Marked as experimental
-- **Commit:** `0abf56d` - Marked as experimental repo
+- **Status:** ✅ Stable, used for experimentation when needed
+
+#### Hosted Service: [YourChessDotComCoach](https://github.com/vds4321/YourChessDotComCoach)
+- **Purpose:** Mobile-first web app for chess coaching
+- **Audience:** End users who want coaching reports
+- **Philosophy:** Production-ready hosted service
+- **Status:** ✅ Backend auth complete, ❌ Frontend auth pending
 
 ---
 
@@ -36,6 +41,24 @@
 6. ✅ Committed and pushed to production repo
 7. ✅ Updated experimental repo with EXPERIMENTS.md
 8. ✅ Marked experimental repo in README
+
+### Phase 1: LLM Coaching (DONE)
+1. ✅ Created `src/llm/chess_coach.py` - SimpleChessCoach class
+2. ✅ Created `tests/test_chess_coach.py` - Unit and integration tests
+3. ✅ Created `notebooks/llm_coaching_demo.ipynb` - Demo notebook
+4. ✅ Generated coaching reports for `ottofive` and `vds4321`
+5. ✅ Added PDF report generation
+6. ✅ Promoted LLM coaching to production (chessdotcomcoach)
+
+### Phase 2: YourChessDotComCoach Backend Auth (DONE)
+1. ✅ SQLite database with SQLAlchemy async
+2. ✅ Email/password authentication with email verification
+3. ✅ Magic link (passwordless) authentication
+4. ✅ JWT tokens (15-min access, 7-day refresh with rotation)
+5. ✅ Linked accounts (up to 3 Chess.com accounts per user)
+6. ✅ Dashboard with "games since last report" feature
+7. ✅ Anti-scouting protection (prevents analyzing opponents during active games)
+8. ✅ All backend endpoints tested with curl
 
 ### What Got Cleaned Up (Production)
 **Removed:**
@@ -57,128 +80,54 @@
 **Consolidated:**
 - `test_app.py` → `tests/test_integration.py`
 
-**Result:** Clean, focused production codebase
+**Result:** Clean, focused production codebase with LLM coaching
 
 ---
 
-## 📋 Next Phase: LLM Proof of Concept
+## 📋 Next Phase: Frontend Auth for YourChessDotComCoach
 
-### Phase 1: Single Skill POC (READY TO START)
+### Phase 3: Frontend Auth Implementation (READY TO START)
 
-**Location:** Experimental repo (`chessanalysisdev`)
-**Timeline:** 1 week
-**Goal:** Prove LLM coaching adds value to chess analysis
+**Location:** YourChessDotComCoach repo (`/Users/martinhynie/Documents/GitHub/YourChessDotComCoach`)
+**Goal:** Complete the mobile-first web app with user authentication
 
 #### Files to Create
 
-**1. `src/llm/chess_coach.py` (~100-150 lines)**
-```python
-"""
-Simple LLM-enhanced chess coaching.
-Proof of concept - no abstraction, just working example.
-"""
+**1. Auth Context (`frontend/contexts/AuthContext.tsx`)**
+- Global auth state management
+- Login/logout functions
+- Token refresh handling
 
-class SimpleChessCoach:
-    """
-    Takes tactical analysis data and generates coaching insights.
-    Single responsibility: Turn numbers into actionable chess advice.
-    """
+**2. Storage Service (`frontend/services/storage.ts`)**
+- SecureStore for mobile
+- AsyncStorage fallback for web
 
-    def __init__(self, api_key=None):
-        # Initialize Anthropic client
+**3. Auth API Service (`frontend/services/auth.ts`)**
+- Signup, login, magic link API calls
+- Token management
 
-    def explain_tactical_mistakes(self, tactical_analysis: Dict, player_rating: int) -> str:
-        """
-        Generate plain-English explanation of tactical mistakes.
+**4. Auth Screens**
+- `frontend/app/(auth)/login.tsx` - Email/password + magic link
+- `frontend/app/(auth)/signup.tsx` - Registration form
+- `frontend/app/(auth)/verify-email.tsx` - Email verification status
 
-        Args:
-            tactical_analysis: Output from TacticalAnalyzer
-            player_rating: Player's current rating
+**5. Dashboard Screens**
+- `frontend/app/(dashboard)/index.tsx` - Linked accounts table with "games since" indicator
+- `frontend/app/(dashboard)/add-account.tsx` - Add Chess.com account form
 
-        Returns:
-            Human-readable coaching advice (markdown string)
-        """
-        # Build prompt from analysis data
-        # Call LLM
-        # Return coaching text
-```
+**6. Modify Existing Files**
+- `frontend/app/_layout.tsx` - Wrap with AuthProvider
+- `frontend/app/index.tsx` - Redirect based on auth state
+- `frontend/services/api.ts` - Add auth headers
 
-**Key Design Principles:**
-- ✅ Single class, single method
-- ✅ No abstraction layer (prove value first)
-- ✅ Obvious behavior (no magic)
-- ✅ Easy to delete if it doesn't work
+#### Backend is Complete
+All auth endpoints are tested and working:
+- `/api/auth/signup`, `/api/auth/login`, `/api/auth/magic-link`
+- `/api/auth/verify-email/{token}`, `/api/auth/refresh`, `/api/auth/logout`
+- `/api/accounts` (GET, POST, DELETE)
+- `/api/dashboard`
 
-**2. `tests/test_chess_coach.py`**
-```python
-import pytest
-from unittest.mock import Mock, patch
-
-def test_coach_explains_mistakes():
-    # Mock Anthropic API
-    # Test prompt construction
-    # Verify output format
-
-@pytest.mark.integration
-@pytest.mark.llm
-def test_real_api_call():
-    # Optional: test with real API
-    # Requires ANTHROPIC_API_KEY
-```
-
-**3. `notebooks/llm_coaching_demo.ipynb`**
-```python
-# Cell 1: Existing analysis
-tactical_analysis = TacticalAnalyzer().analyze_tactical_patterns(parsed_games)
-
-# Cell 2: LLM coaching (NEW)
-coach = SimpleChessCoach()
-advice = coach.explain_tactical_mistakes(tactical_analysis, rating=1650)
-print(advice)
-
-# Cell 3: Assessment
-# Did LLM help? Document here.
-```
-
-**4. `LEARNINGS.md`**
-```markdown
-# LLM Coaching Experiments
-
-## Experiment 1: Tactical Mistake Explanation
-
-**Date:** YYYY-MM-DD
-**Setup:** Fed tactical analysis to Claude 3.5 Sonnet
-**Result:**
-- ✅ What worked
-- ❌ What didn't
-- 💡 Next iteration
-
-**Chess Value Assessment:**
-- Does it help more than just numbers?
-- Is advice actionable?
-- Would I follow this?
-```
-
-#### Success Criteria (for promotion to production)
-1. ✅ Code <150 lines and obvious
-2. ✅ Actually improves chess understanding (not generic advice)
-3. ✅ Tests prove it works
-4. ✅ Documentation explains value
-
-#### Dependencies Needed
-```bash
-pip install anthropic
-```
-
-Add to `requirements.txt`:
-```
-anthropic>=0.8.0
-```
-
-Add to `.env`:
-```bash
-ANTHROPIC_API_KEY=sk-ant-...
-```
+See `YourChessDotComCoach/README.md` for full API documentation.
 
 ---
 
@@ -352,29 +301,42 @@ jupyter notebook notebooks/main_analysis.ipynb
 
 ## 🎯 Immediate Next Steps (Priority Order)
 
-### 1. Start LLM POC (Phase 1)
-**Time:** 1-2 hours
-**Location:** Experimental repo
+### 1. Implement Frontend Auth (Phase 3)
+**Location:** YourChessDotComCoach repo
 **Action:**
 ```bash
-cd ~/Documents/GitHub/chessanalysisdev
-git checkout -b llm-coaching-poc
-# Create src/llm/chess_coach.py
-# Create tests/test_chess_coach.py
-# Create notebooks/llm_coaching_demo.ipynb
+cd ~/Documents/GitHub/YourChessDotComCoach/frontend
+npm install
+# Create auth context, storage service, auth screens
+# Create dashboard screens
+# Test with local backend
 ```
 
-### 2. Test with Real Games
-**Time:** 30 minutes
+### 2. Test Full Flow Locally
 **Action:**
-- Run tactical analysis on your games
-- Feed results to LLM coach
-- Document in LEARNINGS.md: Does it help?
+```bash
+# Terminal 1: Backend
+cd ~/Documents/GitHub/YourChessDotComCoach/backend
+source venv/bin/activate
+uvicorn app.main:app --reload
 
-### 3. Decide: Iterate or Pivot
-**Based on results:**
-- ✅ **If valuable:** Refactor, add tests, promote to production
-- ❌ **If not valuable:** Document why, delete code, try different approach
+# Terminal 2: Frontend
+cd ~/Documents/GitHub/YourChessDotComCoach/frontend
+npx expo start
+```
+
+### 3. Deploy
+**Action:**
+```bash
+# Backend to Fly.io
+cd ~/Documents/GitHub/YourChessDotComCoach/backend
+fly secrets set ANTHROPIC_API_KEY=sk-ant-your-key
+fly secrets set JWT_SECRET_KEY=your-secure-key
+fly deploy
+
+# Frontend to Vercel
+# Import repo, set EXPO_PUBLIC_API_URL
+```
 
 ---
 
@@ -501,24 +463,24 @@ If any no → reconsider
 
 **Context Loading:**
 ```
-Read PROJECT_STATUS.md for complete project context.
+Read /Users/martinhynie/Documents/GitHub/chessdotcomcoach/SESSION_HANDOFF.md for complete project context.
 
 Key points:
-- Two repos: chessdotcomcoach (production), chessanalysisdev (experimental)
-- Fork complete, ready for Phase 1 (LLM POC)
-- Design philosophy: simple first, abstract later
-- Next: Create src/llm/chess_coach.py in experimental repo
+- Three repos: chessdotcomcoach (library), chessanalysisdev (experimental), YourChessDotComCoach (hosted service)
+- LLM coaching is complete in chessdotcomcoach
+- YourChessDotComCoach backend auth is complete and tested
+- Next: Implement frontend auth screens and dashboard
 ```
 
 **Current Priority:**
-Phase 1 - LLM Proof of Concept (see "Immediate Next Steps" section)
+Phase 3 - Frontend Auth for YourChessDotComCoach (see "Immediate Next Steps" section)
 
-**Success Criteria:**
-Code is obvious, helps chess, <150 lines, tested
+**Primary Handoff Document:**
+`chessdotcomcoach/SESSION_HANDOFF.md` - This is the main handoff document for resuming work
 
 ---
 
-**Status:** ✅ Ready to proceed with Phase 1
-**Next Action:** Create SimpleChessCoach class
-**Location:** ~/Documents/GitHub/chessanalysisdev (experimental)
-**Documentation:** All context preserved in this file
+**Status:** ✅ Backend auth complete, frontend auth pending
+**Next Action:** Implement frontend auth screens (AuthContext, login, signup, dashboard)
+**Location:** ~/Documents/GitHub/YourChessDotComCoach/frontend
+**Documentation:** See SESSION_HANDOFF.md for full context
