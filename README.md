@@ -4,6 +4,8 @@
 
 👉 **For production-ready code, see: [chessdotcomcoach](https://github.com/vds4321/chessdotcomcoach)**
 
+👉 **For the hosted web service, see: [YourChessDotComCoach](https://github.com/vds4321/YourChessDotComCoach)**
+
 ---
 
 ## What This Repo Is
@@ -16,12 +18,19 @@ Fast-moving experimentation with:
 
 Code here is **messy and volatile**. Features proven valuable get refactored and promoted to production.
 
-**Already promoted to production (chessdotcomcoach):**
+**Already promoted to production:**
 - ✅ SimpleChessCoach - LLM-powered coaching with Claude
 - ✅ Blunder explanation feature
 - ✅ Opening performance analysis with AI insights
 
+**Features built in YourChessDotComCoach:**
+- ✅ Chess960/variant detection
+- ✅ Tactical blind spots analysis
+- ✅ Scouting reports with AI battle plans
+- ✅ Blitz-specific coaching
+
 **See [EXPERIMENTS.md](EXPERIMENTS.md) for active experiments and tracking.**
+**See [PROJECT_STATUS.md](PROJECT_STATUS.md) for complete project context.**
 
 ---
 
