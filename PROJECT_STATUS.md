@@ -1,7 +1,7 @@
 # Chess Analysis Project - Complete Status & Handoff
 
-**Last Updated:** 2026-01-24
-**Status:** YourChessDotComCoach feature complete, ready for deployment
+**Last Updated:** 2026-01-25
+**Status:** YourChessDotComCoach deployed to Fly.io
 
 ---
 
@@ -23,7 +23,7 @@
 - **Purpose:** Mobile-first web app for chess coaching
 - **Audience:** End users who want coaching reports
 - **Philosophy:** Production-ready hosted service
-- **Status:** Feature complete, not yet deployed
+- **Status:** Deployed to Fly.io (https://yourchessdotcomcoach.fly.dev)
 
 ---
 
@@ -124,8 +124,8 @@ Read /Users/martinhynie/Documents/GitHub/chessdotcomcoach/SESSION_HANDOFF.md
 
 Key points:
 - Three repos: chessdotcomcoach (library), chessanalysisdev (experimental), YourChessDotComCoach (hosted service)
-- YourChessDotComCoach is feature complete
-- Next: Deploy to Fly.io + Vercel
+- YourChessDotComCoach is deployed to Fly.io with persistent volume
+- Next: Deploy frontend to Vercel
 ```
 
 ### Quick Reference Commands
@@ -162,20 +162,15 @@ npx expo start
 
 ## Next Steps
 
-### Deploy YourChessDotComCoach
+### Backend Deployed ✅
+Backend is live at https://yourchessdotcomcoach.fly.dev with:
+- Persistent SQLite volume (`chessdotcomcoach_data`)
+- User accounts and linked accounts persist across deployments
 
-**Backend to Fly.io:**
-```bash
-cd ~/Documents/GitHub/YourChessDotComCoach/backend
-fly secrets set ANTHROPIC_API_KEY=sk-ant-your-key
-fly secrets set JWT_SECRET_KEY=your-secure-key
-fly deploy
-```
-
-**Frontend to Vercel:**
+### Deploy Frontend to Vercel
 - Import repo to Vercel
 - Set root directory to `frontend`
-- Set `EXPO_PUBLIC_API_URL` environment variable
+- Set `EXPO_PUBLIC_API_URL=https://yourchessdotcomcoach.fly.dev`
 
 ---
 
@@ -189,5 +184,5 @@ fly deploy
 
 ---
 
-**Status:** Feature complete
-**Next Action:** Deploy to Fly.io + Vercel
+**Status:** Backend deployed to Fly.io
+**Next Action:** Deploy frontend to Vercel
